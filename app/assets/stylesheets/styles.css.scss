@@ -1,8 +1,17 @@
 @import 'compass';
 body {
-    background-color: #a90329; // Old browsers
-    @include filter-gradient(#a90329, #6d0019, vertical); // IE6-9
-    @include background-image(linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%));
+}
+
+@media (max-width: 979px) {
+    body { padding-top: 0 !important; }
+    .navbar-fixed-top, .navbar-fixed-bottom {
+        position: fixed;
+    }
+    #wrap { padding-top:30px;}
+}
+
+html {
+    height:100%;
 }
 #wrap {
   margin-top:110px;
@@ -10,7 +19,6 @@ body {
 }
 
 #body {
-
 }
 
 #side_body {
@@ -18,13 +26,23 @@ body {
     background: rgba(0,0,0,.4);
 }
 
-footer {
-    background: rgba(0,0,0,.4) !important;
-}
-
-
 /* Navbar
 -------------------------------------------------- */
+.navbar {
+   background-color: #a90329; // Old browsers
+    @include filter-gradient(#a90329, #6d0019, vertical); // IE6-9
+    @include background-image(linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%)); 
+    color:#fff;
+
+    a {
+        color:#fff;
+    }   
+}
+.social {
+    i {
+        color:#a90329;
+    }
+}
 
 header {
     background: rgba(0,0,0,.4) !important;
@@ -33,7 +51,6 @@ header {
 .navbar-fixed-top {
     top:auto;
 }
-
 
 .navbar.navbar-static-top {
     margin-bottom: 35px;

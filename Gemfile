@@ -12,13 +12,14 @@ end
 group :production do
 	gem "unicorn"
 	gem 'pg'
+	gem 'fog'
 end
 
 group :assets do
 	gem 'sass-rails',   '~> 3.2.3'
 	gem 'coffee-rails', '~> 3.2.1'
 	gem 'compass-rails'
-  gem 'uglifier', '>= 1.0.3'
+	gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'jquery-rails', '~> 2.0.0'
@@ -42,5 +43,4 @@ gem 'refinerycms-calendar', '~>2.0.0', :git => 'https://github.com/sbeam/refiner
 # The Heroku gem allows you to interface with Heroku's API
 gem 'heroku'
 
-# Fog allows you to use S3 assets (added for Heroku)
-gem 'fog'
+
