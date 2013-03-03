@@ -6,8 +6,17 @@ body {
     body { padding-top: 0 !important; }
     .navbar-fixed-top, .navbar-fixed-bottom {
         position: fixed;
+        margin-left: 0px;
+        margin-right: 0px;
     }
     #wrap { padding-top:30px;}
+    #footer {
+        width:110%;
+        margin-left:-20px;
+    }
+    .navbar-inner {
+        padding:20px !important;
+    }
 }
 
 html {
@@ -18,10 +27,24 @@ html {
   min-height: 550px;
 }
 
+#home-wrap {
+    width: 70%;
+    padding-top:8em;
+    margin: auto auto;
+    overflow: auto;
+}
+
+#carousel_wrap {
+    padding-top: 8em;
+}
+
 #body {
+    float:left;
+    width:70%;
 }
 
 #side_body {
+    width:30%;
     float:right;
     background: rgba(0,0,0,.4);
 }

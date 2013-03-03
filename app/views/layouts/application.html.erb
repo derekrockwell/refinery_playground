@@ -10,18 +10,14 @@
     <%= render '/refinery/header' -%>
   </header>
 
-  <div id="page_container" class="container ">
-    <div id="wrap" class="row-fluid well well-raised">
-      <section id="page">
-        <%= yield %>
-      </section>
-    </div>
-  </div>
+  <section id="page">
+    <%= yield %>
+  </section>
 
-  <div id="footer" class="navbar transparent navbar-inverse navbar-fixed-bottom">
-      <div class="navbar-inner">
-        <%= render '/refinery/footer' -%>
-      </div>
+  <div id="footer" class="navbar transparent navbar-inverse">
+    <div class="navbar-inner">
+      <%= render '/refinery/footer' -%>
+    </div>
   </div>
 </div>
 <%= render '/refinery/javascripts' %>
