@@ -1,42 +1,74 @@
-<div id="carousel_wrap">
-	<div class="container-fluid">
-	<div id="myCarousel" class="carousel slide">
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
-		<!-- Carousel items -->
-		<div class="carousel-inner">
-			<div class="active item">
-				<%= image_tag "rails-logo-512px.png" %>
-				<h3>Ruby on Rails for Beginners</h3>
-			</div>
-			<div class="item">
-				<h3>Helping you build cool things</h3>
-			</div>
-			<div class="item">
-				<h3>Hosting meetups, classes, etc.</h3>
-			</div>
-		</div>
-		<!-- Carousel nav -->
-		<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-		<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-	</div>
-</div>
-</div>
+
 <div id="home-wrap">
 
 	<div class="container-fluid">
-		<div class="row-fluid">
-			<%= raw @page.content_for(:homepage) %>
-		</div>
-		<!-- yes, I realize there is a query in my view and I'm evil, but I'm just playin around. 
-			I'll refactor this to the controller, promise. -->
-		<% @page.parts.where("title like ?", "section%").each do |section| %>
+
+		<div class="well well-raised">
 			<div class="row-fluid">
-				<%= raw @page.content_for(section.title.to_sym) %>
+				<div class="span4">
+					<%= image_tag "rails-logo-512px.png", :size => "400x400" %>
+				</div>
+				<div class="span6 top2em">
+					<%= raw @page.content_for(:homepage) %></h1>
+				</div>
 			</div>
+		</div>
+
+		<div class="well well-raised">
+			<h1>Upcoming Events</h1>
+			<hr/>
+
+			<!-- Yup, be mad, I'll refactor later. -->
+			<% Refinery::Calendar::Event.all.each do |event| %>
+				<div class="well">
+					<div class="row-fluid">
+						<div class="span12">
+							<h3><%= event.title %></h3>
+							<p><%= raw event.description%></p>
+							<%= link_to "RSVP", event.registration_link, :class => "btn btn-danger btn-large" %>
+						</div>
+					</div>
+				</div>
+			<%end%>
+
+		</div>
+
+
+		<div class="well well-raised">
+			<div class="row-fluid">
+				<h1>Organizers</h1>
+			</div>
+			<hr />
+			<% images = @page.images %>
+			<% @page.parts.where("title like ?", "organizer%").each do |section| %>
+			<% switch = cycle("a","b")%>
+
+			<div class="row-fluid organizer">
+				<% if switch == "a" %>	
+				<div class="span2 offset2">
+					<%= image_tag images.shift.url, :size => "200x200", :class => "img img-circle" %>
+				</div>
+				<div class="span6 offset1">
+					<%= raw @page.content_for(section.title.to_sym) %>
+				</div>
+				<% else%>
+				<div class="span6 offset2">
+					<%= raw @page.content_for(section.title.to_sym) %>
+				</div>
+				<div class="span2 offset1">
+					<%= image_tag images.shift.url, :size => "200x200", :class => "img img-circle" %>
+				</div>
+				<%end%>
+			</div>
+			<%end%>
+		</div>
+	</div>
+		<!-- yes, I realize there is a query in my view and I'm evil, but I'm just playin around. 
+		I'll refactor this to the controller, promise. -->
+		<% @page.parts.where("title like ?", "section%").each do |section| %>
+		<div class="row-fluid">
+			<%= raw @page.content_for(section.title.to_sym) %>
+		</div>
 		<% end %> 
 	</div>
 </div>
